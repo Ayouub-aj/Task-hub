@@ -91,19 +91,18 @@ classDiagram
 ```
 
 ### 🔄 Routing Flow
-
 ```mermaid
 flowchart TD
     URL([Requête HTTP]) --> Router{routes/web.php}
     Router --> Guest[Routes Invités]
     Router --> Auth{Middleware auth}
 
-    Guest --> AuthController[Register & Login Forms]
-    
-    Auth --> Dashboard[TaskController@index\nGET /dashboard]
-    Auth --> CRUD[TaskController\nCREATE · STORE · EDIT · UPDATE · DESTROY]
-    Auth --> QuickStatus[TaskController@updateStatus\nPATCH /tasks/:id/status]
-    Auth --> Telescope[Telescope\n/telescope]
+    Guest --> AuthController[Register and Login Forms]
+
+    Auth --> Dashboard["TaskController@index GET /tasks"]
+    Auth --> CRUD[TaskController CREATE · STORE · EDIT · UPDATE · DESTROY]
+    Auth --> QuickStatus["TaskController@updateStatus PATCH /tasks/:id/status"]
+    Auth --> Telescope[Telescope /telescope]
 
     CRUD --> Model[Eloquent Model]
     Model --> DB[(MySQL 8.0)]
