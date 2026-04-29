@@ -24,10 +24,18 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $firstName = fake()->firstName();
+        $emailHandle = Str::lower($firstName).fake()->numberBetween(10, 999);
+        $domains = ['example.com', 'example.net', 'example.org'];
+
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
+            // First-name-only display, as requested.
+            'name' => $firstName,
+            // Realistic simple email pattern tied to name.
+            'email' => fake()->unique()->lexify($emailHandle).'@'.fake()->randomElement($domains),
+            // Keep a small ratio of unverified accounts for realistic auth tests.
+            'email_verified_at' => fake()->boolean(90) ? now()->subDays(fake()->numberBetween(0, 60)) : null,
+            // Static hash for "password" keeps seed deterministic and fast.
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
         ];
