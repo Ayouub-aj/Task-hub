@@ -28,13 +28,13 @@ class TaskController extends Controller
 
         // T-27 bonus: task counts per status
         $counts = auth()->user()->tasks()
-            ->selectRaw('status, count(*) as total')
-            ->groupBy('status')
-            ->pluck('total', 'status');
+            ->get()
+            ->countBy('status');
+        $user_tasks_count = $counts;
 
         $categories = Category::all();
 
-        return view('tasks.index', compact('tasks', 'categories', 'counts'));
+        return view('tasks.index', compact('tasks', 'categories', 'counts', 'user_tasks_count'));
     }
 
     // T-18 — US4: show create form
