@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Task Hub') }}</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon.png') }}?v=3">
+    <link rel="icon" type="image/svg+xml" sizes="any" href="{{ asset('task-hub-icon-v2.svg') }}?v=4">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}?v=3">
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 <body class="min-h-screen bg-slate-50 font-sans antialiased">

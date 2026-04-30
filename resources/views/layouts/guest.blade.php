@@ -6,6 +6,9 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon.png') }}?v=3">
+        <link rel="icon" type="image/svg+xml" sizes="any" href="{{ asset('task-hub-icon-v2.svg') }}?v=4">
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}?v=3">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">

@@ -1,2 +1,29 @@
+# 1. Define the scope: All crawlers
 User-agent: *
-Disallow:
+
+# 2. Block sensitive framework/system directories
+Disallow: /vendor/
+Disallow: /storage/
+Disallow: /database/
+Disallow: /config/
+Disallow: /app/
+Disallow: /resources/
+
+# 3. Block administrative or auth-related paths
+Disallow: /login
+Disallow: /register
+Disallow: /password/reset
+Disallow: /admin/
+Disallow: /api/v1/internal/
+
+# 4. Block specific file types that shouldn't be indexed
+Disallow: /*.php$
+Disallow: /*.log$
+Disallow: /*.sql$
+
+# 5. Allow public assets specifically (if within a disallowed parent)
+Allow: /storage/app/public/
+Allow: /resources/assets/
+
+# 6. Point to your Sitemap (Crucial for SEO)
+Sitemap: https://task-hub/task.xml
